@@ -5,7 +5,7 @@ var $path = require('./config').path,
 
 module.exports = {
     dev: ()=>{
-        return gulp.src($path.dev +'/**/!(_)*.html')
+        return gulp.src($path.dev +'/**/*.html')
             //.pipe(newer($path.dev_server, {extension: '.html'}))
             .pipe(fileinclude({
                 prefix: '@@',

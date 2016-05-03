@@ -37,11 +37,12 @@ gulp.task('prod_css', $css.prod);
 
 /* Watch */
 var initWatcher = (arr, fn) => {
-    var temp = gulp.watch(arr, fn);
-    temp.on('change', function(file){
+    // var temp = gulp.watch(arr, fn);
+    var watcher = gulp.watch(arr).on('change', function(file){
         console.log(file + ' changed...');
+        fn.apply(this);
     });
-    return temp;
+    return watcher;
 };
 gulp.task('dev_watcher', function(){
     initWatcher([$path.dev +'/**/*.html'], gulp.series('dev_html', $server.dev_reload))
@@ -50,9 +51,10 @@ gulp.task('dev_watcher', function(){
 });
 
 
-var prod = () => gulp.series('prod_clean', gulp.parallel('prod_html', 'prod_css', 'prod_img'), gulp.parallel('prod_server') );
+// var prod = () => ;
 
 
 gulp.task('default', gulp.series('dev_clean', gulp.parallel('dev_html', 'dev_css', 'dev_img'), gulp.parallel('dev_server', 'dev_watcher') )
 );
-gulp.task('dist', prod())
+
+gulp.task('dist', gulp.series('prod_clean', gulp.parallel('prod_html', 'prod_css', 'prod_img'), gulp.parallel('prod_server') ) )
