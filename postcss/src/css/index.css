@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+@import 'base/define';
+@import 'base/reset';
+@import 'index/entry';
+
+
+body{
+    background-color: #eee;
+    background: url(../images/sprites/box@1.jpg) no-repeat 0 0;
+}
+
+.bb{
+    background: url(../images/sprites/box@2.jpg) no-repeat 0 0;
+}
+
+.bb{
+    background: url(../images/sprites/3.jpg) no-repeat 0 0;
+}
+
+.x{
+    border:888px solid;
+    width: calc(4 * $column);
+  @extend bb;
+}

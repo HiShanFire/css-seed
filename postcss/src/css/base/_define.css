@@ -1,0 +1,15 @@
+$red:#030;
+$column: 200px;
+
+
+@define-extend bb{
+  content: 'extend';
+}
+
+.abc2{
+    color: #000;
+
+    &:hover{
+        color: #f00;
+    }
+}

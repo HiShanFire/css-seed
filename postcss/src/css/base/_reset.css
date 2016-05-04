@@ -1,0 +1,11 @@
+.body{
+    font-size: 88px;
+  color: $red;
+  @extend bb;
+
+  &:hover{
+    background-color:#fff;
+    display:flex;
+    /*font-size: calc(4 * $column);*/
+  }
+}
