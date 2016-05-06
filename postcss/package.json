@@ -13,12 +13,14 @@
     "browser-sync": "^2.12.5",
     "del": "^2.2.0",
     "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-concat-css": "^2.2.0",
     "gulp-cssnano": "^2.1.2",
     "gulp-file-include": "^0.13.7",
     "gulp-newer": "^1.1.0",
     "gulp-postcss": "^6.1.1",
     "gulp-sourcemaps": "^2.0.0-alpha",
-    "postcss-sprites": "^3.1.2",
-    "precss": "^1.4.0"
+    "gulp.spritesmith": "^6.2.1",
+    "precss": "^1.4.0",
+    "vinyl-buffer": "^1.0.0"
   }
 }

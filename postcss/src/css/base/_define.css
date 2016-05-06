@@ -1,6 +1,7 @@
 $red:#030;
 $column: 200px;
 
+@custom-media --small (max-width:300px);
 
 @define-extend bb{
   content: 'extend';
@@ -8,6 +9,10 @@ $column: 200px;
 
 .abc2{
     color: #000;
+
+    @media (--small){
+        width: 300px;
+    }
 
     &:hover{
         color: #f00;

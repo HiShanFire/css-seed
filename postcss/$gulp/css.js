@@ -7,7 +7,9 @@ var $path = require('./config').path,
     autoprefixer = require('autoprefixer'),
     nano = require('gulp-cssnano'),
     calccss = require('postcss-calc'),
-    sprites = require('postcss-sprites').default
+    // sprites = require('postcss-sprites').default,
+    // spritesUpdateRule = require('postcss-sprites').updateRule
+    path = require('path')
 ;
 
 /* postcss插件配置 */
@@ -16,28 +18,37 @@ var processors = [
     calccss,
     autoprefixer({
         browsers: ['last 2 versions']
-    }),
-    // css sprite
-    sprites({
-        stylesheetPath: './dist',
-        spritePath: './dist/images/sprites/',
-        filterBy: function(image) {
-            if(image.url.indexOf('sprites/') == -1){
-                return Promise.reject();
-            }
-            return Promise.resolve();
-        },
-        groupBy: function(image){
-            if(/sprites\/.+@/.test(image.url)){
-                return Promise.resolve( image.url.match(/sprites\/(.*)@/)[1] );
-            }
-            return Promise.reject();
-        }
     })
 ];
 
+// css sprite
+// var initSprite = opts => {
+//     var sp;
+//     sp = sprites({
+//         stylesheetPath: opts.stylesheetPath,
+//         spritePath: './dist/images/sprites/',
+//         filterBy: function(image) {
+//             if(image.url.indexOf('sprites/') == -1){
+//                 return Promise.reject();
+//             }
+//             return Promise.resolve();
+//         },
+//         groupBy: function(image){
+//             if(/sprites\/.+@/.test(image.url)){
+//                 return Promise.resolve( image.url.match(/sprites\/(.*)!/)[1] );
+//             }
+//             return Promise.reject();
+//         }
+//     });
+//     return sp;
+// }
+
 module.exports = {
     dev: $reload => () => {
+        // processors.push(initSprite({
+        //     stylesheetPath: $path.dev_server,
+        //     spritePath: $path.dev_server + '/images/sprites/'
+        // }));
         return gulp.src($path.dev+'/**/!(_)*.css')
             // .pipe(newer({dest:$path.dev_server, ext:'.css'}))
             .pipe(sourcemaps.init())

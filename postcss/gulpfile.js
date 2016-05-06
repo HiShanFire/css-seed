@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    path = require('path'),
     $path = require('./$gulp/config').path
 ;
 
@@ -25,6 +26,14 @@ gulp.task('prod_html', $html.prod);
 // gulp.task('dev_img', $images.dev);
 // gulp.task('prod_img', $images.prod);
 
+// Sprites
+var $sprite = require('./$gulp/sprites');
+var dev_sprite = $sprite.init({
+    path : path.join($path.dev, 'sprites'),
+    cssDist : path.join($path.dev, 'css/base/sprite'),
+    imgDist : path.join($path.dev_server, 'images/sprites')
+})
+gulp.task('dev_sprite', dev_sprite)
 
 /* CSS */
 var $css = require('./$gulp/css'),
@@ -54,7 +63,7 @@ gulp.task('dev_watcher', function(){
 // var prod = () => ;
 
 
-gulp.task('default', gulp.series('dev_clean', gulp.parallel('dev_html', 'dev_css'/*, 'dev_img'*/), gulp.parallel('dev_server', 'dev_watcher') )
+gulp.task('default', gulp.series('dev_clean', 'dev_sprite', gulp.parallel('dev_html', 'dev_css'/*, 'dev_img'*/), gulp.parallel('dev_server', 'dev_watcher') )
 );
 
 gulp.task('dist', gulp.series('prod_clean', gulp.parallel('prod_html', 'prod_css'/*, 'prod_img'*/), gulp.parallel('prod_server') ) )

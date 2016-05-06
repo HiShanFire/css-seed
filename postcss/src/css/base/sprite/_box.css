@@ -1,0 +1,12 @@
+@define-mixin $sprite sp__1 {
+    background-image: url(../images/sprite/box.png);
+    background-position: 0px 0px;
+    width: 155px;
+    height: 220px;
+}
+@define-mixin $sprite sp__3 {
+    background-image: url(../images/sprite/box.png);
+    background-position: -155px 0px;
+    width: 220px;
+    height: 146px;
+}
